@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EnseignantController!{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <h1>Enseignants</h1>
+        <ul>
+            {% for enseignant in enseignants %}
+                <li>{{ enseignant.id }}--{{ enseignant.firstName }}--{{ enseignant.lastName }}--{{ enseignant.age }}</li>
+            {% endfor %}
+        </ul>
+
+    </div>
+{% endblock %}
