@@ -1,0 +1,18 @@
+1- composer create-project symfony/skeleton:"^5.4" SymfonyProject
+   cd SymfonyProject
+   compser require webbapp
+
+2- symfony server:start  /server:stop 
+3- php bin/console make:controller (create new controller)
+4-(configure .env) php bin/console doctrine:database:create  (to create new database)
+5-(createclass/entity in the project) php bin/console make:entity
+6-(method 1)(updatedatabase add the entity/class)  php bin/console doctrine:schema:update
+ 6-1- doctrine:schema:update --dump-sql (to dump the SQL statements to the screen)
+ 6-2- doctrine:schema:update --force (to execute the commande) 
+7-(method 2)(update database with migrations)php bin/console make:migration
+ 7-1 php bin/console doctrine:migrations:migrate 
+
+ 
+
+
+ana chef equipe + service +assitant
