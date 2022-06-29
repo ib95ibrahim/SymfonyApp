@@ -22,6 +22,12 @@ class Course
      */
     private $courseName;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Enseignant::class, inversedBy="courses")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $enseignant;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +41,18 @@ class Course
     public function setCourseName(string $courseName): self
     {
         $this->courseName = $courseName;
+
+        return $this;
+    }
+
+    public function getEnseignant(): ?Enseignant
+    {
+        return $this->enseignant;
+    }
+
+    public function setEnseignant(?Enseignant $enseignant): self
+    {
+        $this->enseignant = $enseignant;
 
         return $this;
     }

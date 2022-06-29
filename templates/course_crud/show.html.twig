@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Course{% endblock %}
+
+{% block body %}
+    <h1>Course</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ course.id }}</td>
+            </tr>
+            <tr>
+                <th>CourseName</th>
+                <td>{{ course.courseName }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_course_crud_index') }}">back to list</a>
+
+    <a href="{{ path('app_course_crud_edit', {'id': course.id}) }}">edit</a>
+
+{% endblock %}
