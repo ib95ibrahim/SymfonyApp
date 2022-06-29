@@ -14,11 +14,12 @@ class Course1Type extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('courseName')
+            ->add('id',null,['label'=>'Course ID :','disabled'=>'true'])
+            ->add('courseName',null,['label'=>'Course Name :','required'=>'true'])
             ->add('Enseignant',EntityType::class,[
-                'class'=>Enseignant::class
-            ])
-        ;
+                'class'=>Enseignant::class,'label'=>'Enseignant Name :'
+            ]);
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void
