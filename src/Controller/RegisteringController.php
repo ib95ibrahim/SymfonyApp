@@ -17,7 +17,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class RegisteringController extends AbstractController
 {
     /**
-     * @Route("/register", name="app_registering")
+     * @Route("/register", name="app_registering",methods={"GET","POST"})
      */
     public function index(Request $request,UserPasswordHasherInterface $passHasher): Response
     {
@@ -25,19 +25,18 @@ class RegisteringController extends AbstractController
             ->add('username', TextType::class, [
                 'label' => 'Username'
             ])
-            ->add('password', RepeatedType::class, [
-                'type' => PasswordType::class,
+            ->add('password', null, [
                 'required' => true,
             ])
-
             ->add('Register', SubmitType::class)
             ->getForm();
+
         $regform->handleRequest($request);
 
         if($regform->isSubmitted()){
             $input = $regform->getData();
-
             $user = new User();
+            $user->setRoles(['ROLE_USER']);
 
             $user->setUsername($input['username']);
 
@@ -47,7 +46,7 @@ class RegisteringController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-            return $this->redirect($this->generateUrl('app_home'));
+            return $this->redirectToRoute('app_home');
         }
 
         return $this->render('registering/index.html.twig', [
