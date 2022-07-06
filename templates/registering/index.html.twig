@@ -1,7 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RegisteringController!{% endblock %}
+{% block title %}RegisteringController!{% endblock %}
 
 {% block body %}
-   {{ form(regform) }}
+   <div class="container" style="width: 40%;margin-top: 3%;">
+       <h2 style="margin-bottom: 7%;">Create User Account</h2>
+    <div class="col-md-12">
+      {{ form(regform) }}
+    </div>
+   </div>
 {% endblock %}

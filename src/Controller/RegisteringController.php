@@ -5,14 +5,12 @@ namespace App\Controller;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class RegisteringController extends AbstractController
 {
@@ -22,11 +20,14 @@ class RegisteringController extends AbstractController
     public function index(Request $request,UserPasswordHasherInterface $passHasher): Response
     {
         $regform = $this->createFormBuilder()
-            ->add('username', TextType::class, [
-                'label' => 'Username'
+            ->add('fullName',null,[
+                'label'=>'Name :','required'=>true
             ])
-            ->add('password', null, [
-                'required' => true,
+            ->add('username', TextType::class, [
+                'label' => 'Username :'
+            ])
+            ->add('password', PasswordType::class, [
+                'label'=>'Password :','required' => true,
             ])
             ->add('Register', SubmitType::class)
             ->getForm();
@@ -37,6 +38,8 @@ class RegisteringController extends AbstractController
             $input = $regform->getData();
             $user = new User();
             $user->setRoles(['ROLE_USER']);
+
+            $user->setFullName($input['fullName']);
 
             $user->setUsername($input['username']);
 

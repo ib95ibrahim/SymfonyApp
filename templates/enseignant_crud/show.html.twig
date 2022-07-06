@@ -3,32 +3,50 @@
 {% block title %}Enseignant{% endblock %}
 
 {% block body %}
-    <h1>Enseignant</h1>
+<div class='card' style="margin-top: 6% ;margin-bottom: 2%">
+    <div class='card-header'>
+     <h2>Enseignant :</h2>
+    </div>
+    <div class='card-body'>
+        <div class='row'>
+            <div class='col-md-10'>
+                <div class='row' style="margin-bottom: 2%">
+                    <div class='col-md-4'>Enseignant Id :</div>
+                    <div class='col-md-8'>{{ enseignant.id }}</div>
+                </div>
+                <div class='row' style="margin-bottom: 2%">
+                    <div class='col-md-4' >FirstName :</div>
+                    <div class='col-md-8'>{{ enseignant.firstName }}</div>
+                </div>
+                <div class='row' style="margin-bottom: 2%">
+                    <div class='col-md-4' >LastName :</div>
+                    <div class='col-md-8'>{{ enseignant.lastName }}</div>
+                </div>
+                <div class='row'  style="margin-bottom: 2%">
+                    <div class='col-md-4'>Age :</div>
+                    <div class='col-md-8'>{{ enseignant.age }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='card-footer'>
+        <a class='btn btn-outline-secondary'
+           style='width:80px'
+           href="{{ path('app_enseignant_crud_index') }}"
+        >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-90deg-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z"/>
+            </svg> Back
+        </a>
+        <a class='btn btn-outline-secondary'
+           style='width:80px'
+           href="{{ path('app_enseignant_crud_edit', {'id': enseignant.id }) }}"
+        >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-90deg-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M14.854 4.854a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 4H3.5A2.5 2.5 0 0 0 1 6.5v8a.5.5 0 0 0 1 0v-8A1.5 1.5 0 0 1 3.5 5h9.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4z"/>
+            </svg>Edit
+        </a>
+    </div>
+</div>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ enseignant.id }}</td>
-            </tr>
-            <tr>
-                <th>FirstName</th>
-                <td>{{ enseignant.firstName }}</td>
-            </tr>
-            <tr>
-                <th>LastName</th>
-                <td>{{ enseignant.lastName }}</td>
-            </tr>
-            <tr>
-                <th>Age</th>
-                <td>{{ enseignant.age }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_enseignant_crud_index') }}">back to list</a>
-
-    <a href="{{ path('app_enseignant_crud_edit', {'id': enseignant.id}) }}">edit</a>
-
-    {{ include('enseignant_crud/_delete_form.html.twig') }}
 {% endblock %}

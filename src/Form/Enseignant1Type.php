@@ -12,9 +12,9 @@ class Enseignant1Type extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('firstName')
-            ->add('lastName')
-            ->add('age')
+            ->add('firstName',null,['label'=>'First Name :','required'=>'true'])
+            ->add('lastName',null,['label'=>'Last Name :','required'=>'true'])
+            ->add('age',null,['label'=>'Age :','required'=>'true'])
         ;
     }
 

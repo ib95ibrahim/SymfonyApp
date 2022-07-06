@@ -77,13 +77,14 @@ class EnseignantCrudController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="app_enseignant_crud_delete", methods={"POST"})
+     * @Route("/delete/{id}", name="app_enseignant_crud_delete")
      */
-    public function delete(Request $request, Enseignant $enseignant, EnseignantRepository $enseignantRepository): Response
+    public function delete($id, EnseignantRepository $enseignantRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$enseignant->getId(), $request->request->get('_token'))) {
-            $enseignantRepository->remove($enseignant, true);
-        }
+        $em = $this->getDoctrine()->getManager();
+        $course = $enseignantRepository->find($id);
+        $em->remove($course);
+        $em->flush();
 
         return $this->redirectToRoute('app_enseignant_crud_index', [], Response::HTTP_SEE_OTHER);
     }

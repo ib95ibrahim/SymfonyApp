@@ -36,7 +36,6 @@ security:
         # - { path: ^/admin, roles: ROLE_ADMIN }
          - { path: ^/register, roles: PUBLIC_ACCESS }
          - { path: ^/login, roles: PUBLIC_ACCESS }
-         - { path: ^/home, roles: PUBLIC_ACCESS }
          - { path: ^/, roles: [ROLE_USER,IS_AUTHENTICATED_FULLY] }
        # - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
 

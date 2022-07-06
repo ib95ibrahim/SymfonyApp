@@ -25,21 +25,22 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active"aria-current="page" href="{{ path('app_home') }}">Home</a>
+                        <a class="nav-link active" aria-current="page" href="{{ path('app_home') }}">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Manage
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{{ path('app_enseignant_crud_index') }}">Manage Profs</a></li>
+                            <li><a class="dropdown-item" href="{{ path('app_enseignant_crud_index') }}">Manage Enseignants</a></li>
                             <li><a class="dropdown-item" href="{{ path('app_course_crud_index') }}">Manage Courses</a></li>
                         </ul>
                     </li>
                 </ul>
-                <div class="d-flex">
+                <div class="d-flex ">
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <a class="btn btn-outline-primary" href="{{ path('app_logout') }}">Logout</a>
+                        <h4 style="margin-left: -10%;margin-right: 10%">Welcome : "{{ app.user.fullName }}"</h4>
+                        <a  class="btn btn-outline-danger" href="{{ path('app_logout') }}">Logout</a>
                     {% else %}
                         <a style="margin-right: 3%" class="btn btn-outline-primary" href="{{ path('app_login') }}">Login</a>
                         <a class="btn btn-outline-primary" href="{{ path('app_registering') }}">Register</a>
@@ -48,7 +49,7 @@
             </div>
         </div>
     </nav>
-    <div class="container">
+    <div class="container" >
         {% block body %}
 
 
